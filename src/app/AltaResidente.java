@@ -1,18 +1,12 @@
-
 package app;
-
 
 public class AltaResidente extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AltaPerros
-     */
     public AltaResidente() {
         initComponents();
         look();
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -269,14 +263,6 @@ public class AltaResidente extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(AltaResidente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
