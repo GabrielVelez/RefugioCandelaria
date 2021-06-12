@@ -11,6 +11,12 @@ public class AltaPencionado extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
+        buttonGroup5 = new javax.swing.ButtonGroup();
+        buttonGroup6 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -74,30 +80,42 @@ public class AltaPencionado extends javax.swing.JFrame {
 
         jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
+        buttonGroup2.add(jRadioButton1);
         jRadioButton1.setText("Si");
 
+        buttonGroup2.add(jRadioButton2);
         jRadioButton2.setText("No");
 
+        buttonGroup1.add(jRadioButton3);
         jRadioButton3.setText("Macho");
 
+        buttonGroup1.add(jRadioButton4);
         jRadioButton4.setText("Hembra");
 
+        buttonGroup3.add(jRadioButton6);
         jRadioButton6.setText("No");
 
         jLabel12.setText("Detalle:");
 
+        buttonGroup3.add(jRadioButton7);
         jRadioButton7.setText("Si");
 
+        buttonGroup4.add(jRadioButton5);
         jRadioButton5.setText("Si");
 
+        buttonGroup4.add(jRadioButton8);
         jRadioButton8.setText("No");
 
+        buttonGroup5.add(jRadioButton9);
         jRadioButton9.setText("Si");
 
+        buttonGroup5.add(jRadioButton10);
         jRadioButton10.setText("No");
 
+        buttonGroup6.add(jRadioButton11);
         jRadioButton11.setText("Si");
 
+        buttonGroup6.add(jRadioButton12);
         jRadioButton12.setText("No");
 
         jButton1.setText("Atras");
@@ -281,6 +299,12 @@ public class AltaPencionado extends javax.swing.JFrame {
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
+    private javax.swing.ButtonGroup buttonGroup5;
+    private javax.swing.ButtonGroup buttonGroup6;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
