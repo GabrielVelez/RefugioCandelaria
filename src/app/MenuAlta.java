@@ -25,7 +25,7 @@ public class MenuAlta extends javax.swing.JFrame {
         transito = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Alta de Perros");
@@ -46,7 +46,6 @@ public class MenuAlta extends javax.swing.JFrame {
         });
 
         transito.setText("Transito");
-        transito.setActionCommand("Transito");
         transito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 transitoActionPerformed(evt);
