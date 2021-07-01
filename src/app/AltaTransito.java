@@ -2,7 +2,7 @@
 package app;
 
 
-public class AltaTransito extends javax.swing.JFrame {
+public class AltaTransito extends javax.swing.JDialog {
 
     /**
      * Creates new form AltaPerros
@@ -11,7 +11,11 @@ public class AltaTransito extends javax.swing.JFrame {
         initComponents();
         look();
     }
-
+    public AltaTransito(MenuAlta ventanaPrincipal, boolean modal) {
+        super(ventanaPrincipal,modal);
+        initComponents();
+        look();
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

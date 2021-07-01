@@ -1,8 +1,14 @@
 package app;
 
-public class AltaPencionado extends javax.swing.JFrame {
+public class AltaPencionado extends javax.swing.JDialog {
 
     public AltaPencionado() {
+        initComponents();
+        look();
+    }
+    
+    public AltaPencionado(MenuAlta ventanaPrincipal, boolean modal) {
+        super(ventanaPrincipal,modal);
         initComponents();
         look();
     }

@@ -62,7 +62,6 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         altaPerros = new javax.swing.JButton();
-        bajaPerros = new javax.swing.JButton();
         listaPerros = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
@@ -76,13 +75,6 @@ public class Menu extends javax.swing.JFrame {
         altaPerros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 altaPerrosActionPerformed(evt);
-            }
-        });
-
-        bajaPerros.setText("Baja de Perros");
-        bajaPerros.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bajaPerrosActionPerformed(evt);
             }
         });
 
@@ -104,45 +96,38 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addGap(30, 30, 30))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(137, 137, 137)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bajaPerros, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(altaPerros, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(listaPerros)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(altaPerros, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                            .addComponent(listaPerros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(110, 110, 110)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(119, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton4)
+                .addGap(39, 39, 39))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(altaPerros)
-                .addGap(18, 18, 18)
-                .addComponent(bajaPerros)
-                .addGap(18, 18, 18)
+                .addGap(31, 31, 31)
                 .addComponent(listaPerros)
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addComponent(jButton4)
-                .addGap(25, 25, 25))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void bajaPerrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bajaPerrosActionPerformed
-        new BajaPerros().show();
-    }//GEN-LAST:event_bajaPerrosActionPerformed
 
     private void listaPerrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaPerrosActionPerformed
         // TODO add your handling code here:
@@ -154,8 +139,9 @@ public class Menu extends javax.swing.JFrame {
 
     private void altaPerrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaPerrosActionPerformed
        //Menu.getAp().setVisible(true);
-       //new AltaResidente().show(); iba esta antes y funcionaba normal
-       new MenuAlta().show();
+       //new AltaResidente().show(); iba esta antes y funcionaba normal                                         
+        MenuAlta ventanaMenuAlta = new MenuAlta(this, true);
+       ventanaMenuAlta.show();
         
     }//GEN-LAST:event_altaPerrosActionPerformed
 
@@ -194,7 +180,6 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton altaPerros;
-    private javax.swing.JButton bajaPerros;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton listaPerros;

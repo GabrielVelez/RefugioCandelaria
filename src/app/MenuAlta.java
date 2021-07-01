@@ -4,7 +4,7 @@ package app;
  *
  * @author Esteban
  */
-public class MenuAlta extends javax.swing.JFrame {
+public class MenuAlta extends javax.swing.JDialog {
 
 
   
@@ -13,7 +13,11 @@ public class MenuAlta extends javax.swing.JFrame {
         initComponents();
         look();
     }
-            
+    public MenuAlta(Menu ventanaPrincipal, boolean modal) {
+        super(ventanaPrincipal,modal);
+        initComponents();
+        look();
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -100,11 +104,12 @@ public class MenuAlta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void pensionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pensionadoActionPerformed
-        new AltaPencionado().show();//se abren mil(?)
+        AltaPencionado ventanaPencionado = new AltaPencionado(this, true);
+        ventanaPencionado.show();
     }//GEN-LAST:event_pensionadoActionPerformed
-
     private void transitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transitoActionPerformed
-        new AltaTransito().show();
+        AltaTransito ventanaTransito = new AltaTransito(this, true);
+        ventanaTransito.show();
     }//GEN-LAST:event_transitoActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -113,7 +118,8 @@ public class MenuAlta extends javax.swing.JFrame {
 
     private void residenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residenteActionPerformed
        //Menu.getAp().setVisible(true);
-       new AltaResidente().show();
+       AltaResidente ventanaResidente = new AltaResidente(this, true);
+       ventanaResidente.show();
         
     }//GEN-LAST:event_residenteActionPerformed
 

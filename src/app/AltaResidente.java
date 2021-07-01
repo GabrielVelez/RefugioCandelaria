@@ -1,8 +1,13 @@
 package app;
 
-public class AltaResidente extends javax.swing.JFrame {
+public class AltaResidente extends javax.swing.JDialog {
 
     public AltaResidente() {
+        initComponents();
+        look();
+    }
+    public AltaResidente(MenuAlta ventanaPrincipal, boolean modal) {
+        super(ventanaPrincipal,modal);
         initComponents();
         look();
     }
