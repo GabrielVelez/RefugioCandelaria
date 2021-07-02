@@ -19,7 +19,7 @@ public class Ejecutar {
     private Connection conexion;
     private Statement stmt = null;
     
-    public  ResultSet consulta(String query) throws SQLException{
+    public  ResultSet consulta(String query) throws SQLException, ClassNotFoundException{
         conectar = new ConexionBD();
         conexion = conectar.conexion();
         ResultSet res = null;
@@ -36,7 +36,7 @@ public class Ejecutar {
         return res;
     }
     
-    public String peticion(String query){
+    public String peticion(String query) throws ClassNotFoundException{
         conectar = new ConexionBD();
         conexion = conectar.conexion();
         if(conexion != null){

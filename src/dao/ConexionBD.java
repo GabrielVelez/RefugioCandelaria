@@ -11,10 +11,10 @@ import java.util.logging.Logger;
  * @author Leirbag
  */
 public class ConexionBD {
-    public Connection conexion(){
+    public Connection conexion() throws ClassNotFoundException{
         Connection c = null;
         try{
-            //Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             c = DriverManager.getConnection("jdbc:mysql://localhost:3306/prueba", "root", "");
         }
         catch(SQLException ex){
