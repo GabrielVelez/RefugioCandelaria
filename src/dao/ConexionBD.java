@@ -15,7 +15,7 @@ public class ConexionBD {
         Connection c = null;
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            c = DriverManager.getConnection("jdbc:mysql://localhost:3306/prueba", "root", "");
+            c = DriverManager.getConnection("jdbc:mysql://localhost:3306/candelaria", "root", "");
         }
         catch(SQLException ex){
             Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);

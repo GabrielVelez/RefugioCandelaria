@@ -14,19 +14,19 @@ import java.util.ArrayList;
  *
  * @author Zelbag
  */
-public class Raza {
+public class Estado {
     
     private int id;
     private String nombre;
 
     
     // <editor-fold defaultstate="collapsed" desc="Constructors">
-    public Raza(int id, String nombre) {
+    public Estado(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }
     
-    public Raza() {
+    public Estado() {
     }
 // </editor-fold>
         
@@ -76,18 +76,18 @@ public class Raza {
     // </editor-fold>
  
     
-    public static ArrayList<Raza> getRazas() throws SQLException, Exception{
+    public static ArrayList<Estado> getEstados() throws SQLException, Exception{
         try{
             
-            ArrayList<Raza> razas = new ArrayList<Raza>();
+            ArrayList<Estado> razas = new ArrayList<Estado>();
             Ejecutar ej = new Ejecutar();
-            ResultSet rs = ej.consulta("select id, nombre from raza");
+            ResultSet rs = ej.consulta("select id, nombre from estado");
             try{
                 while(rs.next()) {
-                    Raza r = new Raza();
-                    r.setId(rs.getInt("id"));
-                    r.setNombre(rs.getString("nombre"));
-                    razas.add(r);
+                    Estado e = new Estado();
+                    e.setId(rs.getInt("id"));
+                    e.setNombre(rs.getString("nombre"));
+                    razas.add(e);
                 }
             }
             catch(SQLException sqlEx){
@@ -100,21 +100,21 @@ public class Raza {
             throw ex;
         }
     }
-    public static Raza getRazaId(int id) throws SQLException, Exception{
+    public static Estado getEstadoId(int id) throws SQLException, Exception{
         try{
-            Raza r = new Raza();
+            Estado e = new Estado();
             Ejecutar ej = new Ejecutar();
-            ResultSet rs = ej.consulta("select id, nombre from raza where id ="+id);
+            ResultSet rs = ej.consulta("select id, nombre from estado where id ="+id);
             try{
                 while(rs.next()) {
-                    r.setId(rs.getInt("id"));
-                    r.setNombre(rs.getString("nombre"));
+                    e.setId(rs.getInt("id"));
+                    e.setNombre(rs.getString("nombre"));
                 }
             }
             catch(SQLException sqlEx){
                 throw sqlEx;
             }
-            return r;
+            return e;
             
             }
         catch(ClassNotFoundException | SQLException ex){

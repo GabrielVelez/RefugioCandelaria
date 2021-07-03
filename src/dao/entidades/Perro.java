@@ -1,6 +1,10 @@
 package dao.entidades;
 
-import java.sql.Timestamp;
+import dao.Ejecutar;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -13,30 +17,37 @@ public class Perro {
     private String nombre;
     private byte edad;
     private int id_raza;
-    private Timestamp ingreso;
+    private Date ingresado;
     private boolean sexo;
     private boolean castrado;
     private boolean desparacitado;
     private boolean vacuna;
     private boolean antirrabica;
+    private boolean adopcion;
+    private Integer id_duenio;
+    private Date egreso;
+    private ArrayList<Enfermedad> enfermedades;
     
     
     // <editor-fold defaultstate="collapsed" desc="Constructors">
     public Perro() {
     }
-
-    public Perro(int id, String nombre, byte edad, int id_raza, Timestamp ingreso, boolean sexo, boolean castrado, boolean desparacitado, boolean vacuna, boolean antirrabica) {
+    public Perro(int id, String nombre, byte edad, int id_raza, Date ingresado, boolean sexo, boolean castrado, boolean desparacitado, boolean vacuna, boolean antirrabica, boolean adopcion, int id_duenio, Date egreso) {
         this.id = id;
         this.nombre = nombre;
         this.edad = edad;
         this.id_raza = id_raza;
-        this.ingreso = ingreso;
+        this.ingresado = ingresado;
         this.sexo = sexo;
         this.castrado = castrado;
         this.desparacitado = desparacitado;
         this.vacuna = vacuna;
         this.antirrabica = antirrabica;
+        this.adopcion = adopcion;
+        this.id_duenio = id_duenio;
+        this.egreso = egreso;
     }
+    
 
     // </editor-fold>
     
@@ -113,15 +124,6 @@ public class Perro {
      */
     public void setId_raza(int id_raza) {
         this.id_raza = id_raza;
-    }
-
-    /**
-     * Get the value of string
-     *
-     * @return the value of string
-     */
-    public Timestamp getString() {
-        return ingreso;
     }
 
     /**
@@ -215,5 +217,84 @@ public class Perro {
     }
 
     
+    public Date getIngresado() {
+        return ingresado;
+    }
+
+    public void setIngresado(Date ingresado) {
+        this.ingresado = ingresado;
+    }
+
+    public boolean isAdopcion() {
+        return adopcion;
+    }
+
+    public void setAdopcion(boolean adopcion) {
+        this.adopcion = adopcion;
+    }
+
+    public Integer getId_duenio() {
+        return id_duenio;
+    }
+
+    public void setId_duenio(Integer id_duenio) {
+        this.id_duenio = id_duenio;
+    }
+
+    public Date getEgreso() {
+        return egreso;
+    }
+
+    public void setEgreso(Date egreso) {
+        this.egreso = egreso;
+    }
+    public ArrayList<Enfermedad> getEnfermedades() {
+        return enfermedades;
+    }
+
+    public void setEnfermedades(ArrayList<Enfermedad> enfermedades) {
+        this.enfermedades = enfermedades;
+    }
     // </editor-fold>
+    
+    
+    public static ArrayList<Perro> getPerros() throws SQLException, Exception{
+        try{
+            
+            ArrayList<Perro> perros = new ArrayList<Perro>();
+            Ejecutar ej = new Ejecutar();
+            ResultSet rs = ej.consulta("select id, nombre, edad, ingresado, "
+                                     + "id_raza, sexo, castrado, desparacitado, "
+                                     + "vacuna, antirrabica, adopcion "
+                                     + "from perro");
+            try{
+                while(rs.next()) {
+                    Perro p = new Perro();
+                    p.setId(rs.getInt("id"));
+                    p.setNombre(rs.getString("nombre"));
+                    p.setEdad(rs.getByte("edad"));
+                    p.setIngresado(rs.getDate("ingresado"));
+                    p.setId_raza(rs.getInt("id_raza"));
+                    p.setSexo(rs.getBoolean("sexo"));
+                    p.setCastrado(rs.getBoolean("castrado"));
+                    p.setDesparacitado(rs.getBoolean("desparacitado"));
+                    p.setVacuna(rs.getBoolean("vacuna"));
+                    p.setAntirrabica(rs.getBoolean("antirrabica"));
+                    p.setAdopcion(rs.getBoolean("adopcion"));
+                    perros.add(p);
+                }
+            }
+            catch(SQLException sqlEx){
+                throw sqlEx;
+            }           
+            
+            return perros;
+            
+            }
+        catch(ClassNotFoundException | SQLException ex){
+            throw ex;
+        }
+    }
+
+    
 }

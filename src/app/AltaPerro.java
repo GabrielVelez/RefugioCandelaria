@@ -7,11 +7,11 @@ public class AltaPerro extends javax.swing.JDialog {
         look();
     }
     
-//    public AltaPerro(Menu ventanaPrincipal, boolean modal) {
-//        super(ventanaPrincipal,modal);
-//        initComponents();
-//        look();
-//    }
+    public AltaPerro(FrmMenuPrincipal ventanaPrincipal, boolean modal) {
+        super(ventanaPrincipal,modal);
+        initComponents();
+        look();
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
