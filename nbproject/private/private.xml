@@ -3,12 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Zelbag/Documents/NetBeansProjects/RefugioCandelaria/src/app/AltaPerro.java</file>
-            <file>file:/C:/Users/Zelbag/Documents/NetBeansProjects/RefugioCandelaria/src/app/FrmMenuPrincipal.java</file>
-            <file>file:/C:/Users/Zelbag/Documents/NetBeansProjects/RefugioCandelaria/src/dao/entidades/Estado.java</file>
-            <file>file:/C:/Users/Zelbag/Documents/NetBeansProjects/RefugioCandelaria/src/dao/entidades/Perro.java</file>
-            <file>file:/C:/Users/Zelbag/Documents/NetBeansProjects/RefugioCandelaria/src/dao/entidades/Raza.java</file>
-            <file>file:/C:/Users/Zelbag/Documents/NetBeansProjects/RefugioCandelaria/src/app/FrmListaPerros.java</file>
+            <file>file:/C:/Users/Matias/Documents/Github/RefugioCandelaria/src/app/AltaDueño.java</file>
+            <file>file:/C:/Users/Matias/Documents/Github/RefugioCandelaria/src/app/AltaEnfermedades.java</file>
         </group>
     </open-files>
 </project-private>
