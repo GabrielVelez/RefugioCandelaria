@@ -265,7 +265,7 @@ public class Perro {
             Ejecutar ej = new Ejecutar();
             ResultSet rs = ej.consulta("select id, nombre, edad, ingresado, "
                                      + "id_raza, sexo, castrado, desparacitado, "
-                                     + "vacuna, antirrabica, adopcion "
+                                     + "vacuna, antirrabica, adoptado "
                                      + "from perro");
             try{
                 while(rs.next()) {

@@ -1,7 +1,6 @@
 package app;
 
 import dao.entidades.*;
-import java.awt.Button;
 import java.beans.PropertyVetoException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -47,9 +46,7 @@ public class FrmListaEstados extends javax.swing.JInternalFrame {
             DefaultTableModel tableModel = new DefaultTableModel(col, 0);
             tblEstados.setModel(tableModel);
             for(Estado e:estados){
-                Button btn1 = new Button();
-                Button btn2 = new Button();
-                Object[] obj = {e.getId(), e.getNombre(), btn1, btn2};
+                Object[] obj = {e.getId(), e.getNombre()};
                 tableModel.addRow(obj);
             }
         }

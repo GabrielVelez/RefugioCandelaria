@@ -20,8 +20,21 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
      */
     public FrmMenuPrincipal() {
         initComponents();
+        load();
     }
 
+    private void load(){
+        FrmListaPerros ventanaPerros;
+        try {
+            ventanaPerros = new FrmListaPerros(this);
+            DpnlEscritorio.add(ventanaPerros);
+            ventanaPerros.show();
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(FrmMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
