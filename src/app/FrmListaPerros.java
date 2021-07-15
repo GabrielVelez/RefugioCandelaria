@@ -31,6 +31,7 @@ public class FrmListaPerros extends javax.swing.JInternalFrame {
         }
         catch(PropertyVetoException e)
         {
+            JOptionPane.showMessageDialog(null, e.toString());
         }
         
         
@@ -102,7 +103,7 @@ public class FrmListaPerros extends javax.swing.JInternalFrame {
             }
         }
         catch(Exception ex){
-            JOptionPane.showMessageDialog(null, ex.toString());
+            JOptionPane.showMessageDialog(null, "Error al cargar los perros.\n:Excepción:"+ex.toString());
         }
     }
     
@@ -189,10 +190,15 @@ public class FrmListaPerros extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        AltaPerro aP = new AltaPerro(mPrincipal, true);
-        aP.show();
-        
-        loadTable();
+        try{
+            AltaPerro aP = new AltaPerro(mPrincipal, true);
+            aP.show();
+
+            loadTable();
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Error al abrir el formulario.\n:Excepción:"+ex.toString());
+        }
         
     }//GEN-LAST:event_jButton2ActionPerformed
 

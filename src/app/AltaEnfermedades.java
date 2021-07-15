@@ -36,7 +36,7 @@ public class AltaEnfermedades extends javax.swing.JFrame {
         alta = new javax.swing.JButton();
         Cancelar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         jLabel1.setText("Alta Enfermedades");
@@ -49,7 +49,7 @@ public class AltaEnfermedades extends javax.swing.JFrame {
 
         jLabel3.setText("Tratamiento");
 
-        alta.setText("Dar de alta");
+        alta.setText("Guardar");
         alta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 altaActionPerformed(evt);

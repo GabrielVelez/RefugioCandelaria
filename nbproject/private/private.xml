@@ -3,8 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Matias/Documents/Github/RefugioCandelaria/src/app/AltaDueño.java</file>
-            <file>file:/C:/Users/Matias/Documents/Github/RefugioCandelaria/src/app/AltaEnfermedades.java</file>
+            <file>file:/C:/Users/Zelbag/Documents/NetBeansProjects/RefugioCandelaria/src/app/FrmListaRazas.java</file>
+            <file>file:/C:/Users/Zelbag/Documents/NetBeansProjects/RefugioCandelaria/src/app/FrmMenuPrincipal.java</file>
+            <file>file:/C:/Users/Zelbag/Documents/NetBeansProjects/RefugioCandelaria/src/dao/ConexionBD.java</file>
+            <file>file:/C:/Users/Zelbag/Documents/NetBeansProjects/RefugioCandelaria/src/app/FrmListaEstados.java</file>
+            <file>file:/C:/Users/Zelbag/Documents/NetBeansProjects/RefugioCandelaria/src/app/AltaRaza.java</file>
+            <file>file:/C:/Users/Zelbag/Documents/NetBeansProjects/RefugioCandelaria/src/dao/entidades/Estado.java</file>
+            <file>file:/C:/Users/Zelbag/Documents/NetBeansProjects/RefugioCandelaria/src/app/AltaEstado.java</file>
+            <file>file:/C:/Users/Zelbag/Documents/NetBeansProjects/RefugioCandelaria/src/dao/entidades/Raza.java</file>
         </group>
     </open-files>
 </project-private>

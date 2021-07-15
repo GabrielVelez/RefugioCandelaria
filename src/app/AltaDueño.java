@@ -43,7 +43,7 @@ public class AltaDueño extends javax.swing.JFrame {
         telefono = new javax.swing.JTextField();
         facebook = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(null);
         setResizable(false);
 

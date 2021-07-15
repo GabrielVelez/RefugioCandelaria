@@ -121,4 +121,17 @@ public class Raza {
             throw ex;
         }
     }
+    
+    public static String createRaza(String nombre) throws ClassNotFoundException{
+        String mensaje = "";
+        Ejecutar ej = new Ejecutar();
+        mensaje = ej.peticion("insert into raza(`nombre`) values('"+nombre+"')");
+        return mensaje;
+    }
+    public static String updateRaza(Raza r) throws ClassNotFoundException{
+        String mensaje = "";
+        Ejecutar ej = new Ejecutar();
+        mensaje = ej.peticion("update raza set `nombre` = '"+r.getNombre()+"' where id ="+r.getId()+";");
+        return mensaje;
+    }
 }
