@@ -20,8 +20,21 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
      */
     public FrmMenuPrincipal() {
         initComponents();
+        load();
     }
 
+    private void load(){
+        FrmListaPerros ventanaPerros;
+        try {
+            ventanaPerros = new FrmListaPerros(this);
+            DpnlEscritorio.add(ventanaPerros);
+            ventanaPerros.show();
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(FrmMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,14 +47,16 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         DpnlEscritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        mitmListaPerros = new javax.swing.JMenuItem();
+        mitmListaBaja = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        mitmListaDuenios = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        mitmListaEnfermedades = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        mitmListaRazas = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        mitmListaEstados = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,44 +73,61 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
         jMenu1.setText("Perro");
 
-        jMenuItem1.setText("Listado en refugio");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        mitmListaPerros.setText("Listado en refugio");
+        mitmListaPerros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                mitmListaPerrosActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(mitmListaPerros);
 
-        jMenuItem2.setText("Listado de bajas");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        mitmListaBaja.setText("Listado de bajas");
+        mitmListaBaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                mitmListaBajaActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jMenu1.add(mitmListaBaja);
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Raza");
+        jMenu4.setText("Dueño");
 
-        jMenuItem3.setText("Listado de razas");
-        jMenu2.add(jMenuItem3);
+        mitmListaDuenios.setText("Listado de dueños");
+        jMenu4.add(mitmListaDuenios);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jMenu4);
 
         jMenu3.setText("Enfermedad");
 
-        jMenuItem4.setText("Listado de enfermedades");
-        jMenu3.add(jMenuItem4);
+        mitmListaEnfermedades.setText("Listado de enfermedades");
+        jMenu3.add(mitmListaEnfermedades);
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setText("Dueño");
+        jMenu2.setText("Raza");
 
-        jMenuItem5.setText("Listado de dueños");
-        jMenu4.add(jMenuItem5);
+        mitmListaRazas.setText("Listado de razas");
+        mitmListaRazas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitmListaRazasActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mitmListaRazas);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(jMenu2);
+
+        jMenu5.setText("Estado");
+
+        mitmListaEstados.setText("Listado de estados");
+        mitmListaEstados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitmListaEstadosActionPerformed(evt);
+            }
+        });
+        jMenu5.add(mitmListaEstados);
+
+        jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
 
@@ -113,21 +145,25 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void mitmListaPerrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitmListaPerrosActionPerformed
         // TODO add your handling code here:
         FrmListaPerros ventanaPerros;
         try {
             ventanaPerros = new FrmListaPerros(this);
-            DpnlEscritorio.removeAll();
+            var jFrame = DpnlEscritorio.getSelectedFrame();
+            if(jFrame != null){
+                jFrame.dispose();
+                DpnlEscritorio.removeAll();            
+            }
             DpnlEscritorio.add(ventanaPerros);
             ventanaPerros.show();
         } catch (PropertyVetoException ex) {
             Logger.getLogger(FrmMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_mitmListaPerrosActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void mitmListaBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitmListaBajaActionPerformed
         // TODO add your handling code here:
         FrmListaPerros ventanaPerros;
         try {
@@ -138,7 +174,41 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         } catch (PropertyVetoException ex) {
             Logger.getLogger(FrmMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_mitmListaBajaActionPerformed
+
+    private void mitmListaRazasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitmListaRazasActionPerformed
+        // TODO add your handling code here:
+        FrmListaRazas ventanaRazas;
+        try {
+            ventanaRazas = new FrmListaRazas(this);
+            var jFrame = DpnlEscritorio.getSelectedFrame();
+            if(jFrame != null){
+                jFrame.dispose();
+                DpnlEscritorio.removeAll();            
+            }
+            DpnlEscritorio.add(ventanaRazas);
+            ventanaRazas.show();
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(FrmMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_mitmListaRazasActionPerformed
+
+    private void mitmListaEstadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitmListaEstadosActionPerformed
+        // TODO add your handling code here:
+        FrmListaEstados ventanaEstados;
+        try {
+            ventanaEstados = new FrmListaEstados(this);
+            var jFrame = DpnlEscritorio.getSelectedFrame();
+            if(jFrame != null){
+                jFrame.dispose();
+                DpnlEscritorio.removeAll();            
+            }DpnlEscritorio.add(ventanaEstados);
+            ventanaEstados.show();
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(FrmMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+               
+    }//GEN-LAST:event_mitmListaEstadosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,11 +252,13 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem mitmListaBaja;
+    private javax.swing.JMenuItem mitmListaDuenios;
+    private javax.swing.JMenuItem mitmListaEnfermedades;
+    private javax.swing.JMenuItem mitmListaEstados;
+    private javax.swing.JMenuItem mitmListaPerros;
+    private javax.swing.JMenuItem mitmListaRazas;
     // End of variables declaration//GEN-END:variables
 }

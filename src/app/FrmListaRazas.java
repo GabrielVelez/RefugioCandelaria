@@ -12,12 +12,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Zelbag
  */
-public class FrmListaPerros extends javax.swing.JInternalFrame {
+public class FrmListaRazas extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form NewJInternalFrame
      */
-    public FrmListaPerros(FrmMenuPrincipal mP) throws PropertyVetoException {
+    public FrmListaRazas(FrmMenuPrincipal mP) throws PropertyVetoException {
         initComponents();
         load();
         mPrincipal = mP;
@@ -41,69 +41,18 @@ public class FrmListaPerros extends javax.swing.JInternalFrame {
     
     private void loadTable(){
         try{
-            ArrayList<Perro> perros = Perro.getPerros();
-            String col[] = {"id","Nombre","Edad", "Ingreso", "Raza", "Sexo", "Castrado", "Despar.", "Vacuna", "Antirrabica", "Adopción"};
+            ArrayList<Raza> razas = Raza.getRazas();
+            String col[] = {"id","Nombre"};
             DefaultTableModel tableModel = new DefaultTableModel(col, 0);
-            tblPerros.setModel(tableModel);
-            for(Perro p:perros){
-                String raza = "", sexo = "", castrado = "", desparacitado = "", vacuna = "", antirrabica = "", adopcion = "";
+            tblRazas.setModel(tableModel);
+            for(Raza r:razas){
                 
-                Raza r = Raza.getRazaId((p.getId_raza()));
-                raza = r.getNombre();
-                if(p.isSexo()){
-                    sexo = "Macho";
-                }
-                else{
-                    sexo = "Hembra";
-                }
-                if(p.isCastrado()){
-                    castrado = "Si";
-                }
-                else{
-                    castrado = "No";
-                }
-                if(p.isDesparacitado()){
-                    desparacitado = "Si";
-                }
-                else{
-                    desparacitado = "No";
-                }
-                if(p.isVacuna()){
-                    vacuna = "Si";
-                }
-                else{
-                    vacuna = "No";
-                }
-                if(p.isAntirrabica()){
-                    antirrabica = "Si";
-                }
-                else{
-                    antirrabica = "No";
-                }
-                if(p.isAdopcion()){
-                    adopcion = "Si";
-                }
-                else{
-                    adopcion = "No";
-                }
-                
-                Date dt = new Date(System.currentTimeMillis());
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
-                int esteAnio = Integer.parseInt(formatter.format(dt));
-                formatter = new SimpleDateFormat("yyyy");
-                int ingres = Integer.parseInt(formatter.format(p.getIngresado()));
-                int masEdad = esteAnio - ingres;
-                
-                
-                Object[] obj = {p.getId(), p.getNombre(), p.getEdad() + masEdad, 
-                    p.getIngresado(), raza, sexo, castrado
-                    , desparacitado, vacuna,
-                    antirrabica, adopcion};
+                Object[] obj = {r.getId(), r.getNombre()};
                 tableModel.addRow(obj);
             }
         }
         catch(Exception ex){
-            JOptionPane.showMessageDialog(null, "Error al cargar los perros.\n:Excepción:"+ex.toString());
+            JOptionPane.showMessageDialog(null, "No se pudo cargar las razas.\n:Excepción:"+ex.toString());
         }
     }
     
@@ -117,16 +66,16 @@ public class FrmListaPerros extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblPerros = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        tblRazas = new javax.swing.JTable();
+        btnFiltar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
 
-        setTitle("Listado de perros");
+        setTitle("Listado de razas");
         setMaximumSize(new java.awt.Dimension(1038, 765));
         setMinimumSize(new java.awt.Dimension(1038, 765));
         setPreferredSize(new java.awt.Dimension(1038, 765));
 
-        tblPerros.setModel(new javax.swing.table.DefaultTableModel(
+        tblRazas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -137,13 +86,13 @@ public class FrmListaPerros extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tblPerros);
+        jScrollPane1.setViewportView(tblRazas);
 
-        jButton1.setText("Filtrar");
-        jButton1.setToolTipText("");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnFiltar.setText("Filtrar");
+        btnFiltar.setToolTipText("");
+        btnFiltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnFiltarActionPerformed(evt);
             }
         });
 
@@ -166,7 +115,7 @@ public class FrmListaPerros extends javax.swing.JInternalFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnAgregar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)))
+                        .addComponent(btnFiltar)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -174,25 +123,25 @@ public class FrmListaPerros extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFiltar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 656, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnFiltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnFiltarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
         try{
-            AltaPerro aP = new AltaPerro(mPrincipal, true);
-            aP.show();
+            AltaRaza aR = new AltaRaza(mPrincipal, true);
+            aR.show();
 
             loadTable();
         }
@@ -205,8 +154,8 @@ public class FrmListaPerros extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnFiltar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblPerros;
+    private javax.swing.JTable tblRazas;
     // End of variables declaration//GEN-END:variables
 }

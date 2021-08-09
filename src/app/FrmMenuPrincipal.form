@@ -9,32 +9,32 @@
             <Property name="text" type="java.lang.String" value="Perro"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="mitmListaPerros">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Listado en refugio"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mitmListaPerrosActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+            <MenuItem class="javax.swing.JMenuItem" name="mitmListaBaja">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Listado de bajas"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mitmListaBajaActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu2">
+        <Menu class="javax.swing.JMenu" name="jMenu4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Raza"/>
+            <Property name="text" type="java.lang.String" value="Due&#xf1;o"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+            <MenuItem class="javax.swing.JMenuItem" name="mitmListaDuenios">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Listado de razas"/>
+                <Property name="text" type="java.lang.String" value="Listado de due&#xf1;os"/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -44,22 +44,40 @@
             <Property name="text" type="java.lang.String" value="Enfermedad"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
+            <MenuItem class="javax.swing.JMenuItem" name="mitmListaEnfermedades">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Listado de enfermedades"/>
               </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu4">
+        <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Due&#xf1;o"/>
+            <Property name="text" type="java.lang.String" value="Raza"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
+            <MenuItem class="javax.swing.JMenuItem" name="mitmListaRazas">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Listado de due&#xf1;os"/>
+                <Property name="text" type="java.lang.String" value="Listado de razas"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mitmListaRazasActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenu5">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Estado"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="mitmListaEstados">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Listado de estados"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mitmListaEstadosActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

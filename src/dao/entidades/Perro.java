@@ -265,7 +265,7 @@ public class Perro {
             Ejecutar ej = new Ejecutar();
             ResultSet rs = ej.consulta("select id, nombre, edad, ingresado, "
                                      + "id_raza, sexo, castrado, desparacitado, "
-                                     + "vacuna, antirrabica, adopcion "
+                                     + "vacuna, antirrabica, adoptado "
                                      + "from perro");
             try{
                 while(rs.next()) {
@@ -296,5 +296,42 @@ public class Perro {
         }
     }
 
-    
+    public static ArrayList<Perro> getPerroId(int id) throws SQLException, Exception{
+        try{
+            
+            ArrayList<Perro> perros = new ArrayList<Perro>();
+            Ejecutar ej = new Ejecutar();
+            ResultSet rs = ej.consulta("select id, nombre, edad, ingresado, "
+                                     + "id_raza, sexo, castrado, desparacitado, "
+                                     + "vacuna, antirrabica, adopcion "
+                                     + "from perro "
+                                     + "where id ="+id);
+            try{
+                while(rs.next()) {
+                    Perro p = new Perro();
+                    p.setId(rs.getInt("id"));
+                    p.setNombre(rs.getString("nombre"));
+                    p.setEdad(rs.getByte("edad"));
+                    p.setIngresado(rs.getDate("ingresado"));
+                    p.setId_raza(rs.getInt("id_raza"));
+                    p.setSexo(rs.getBoolean("sexo"));
+                    p.setCastrado(rs.getBoolean("castrado"));
+                    p.setDesparacitado(rs.getBoolean("desparacitado"));
+                    p.setVacuna(rs.getBoolean("vacuna"));
+                    p.setAntirrabica(rs.getBoolean("antirrabica"));
+                    p.setAdopcion(rs.getBoolean("adopcion"));
+                    perros.add(p);
+                }
+            }
+            catch(SQLException sqlEx){
+                throw sqlEx;
+            }           
+            
+            return perros;
+            
+            }
+        catch(ClassNotFoundException | SQLException ex){
+            throw ex;
+        }
+    }
 }

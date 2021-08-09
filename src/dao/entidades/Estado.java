@@ -121,4 +121,17 @@ public class Estado {
             throw ex;
         }
     }
+    
+    public static String createEstado(String nombre) throws ClassNotFoundException{
+        String mensaje = "";
+        Ejecutar ej = new Ejecutar();
+        mensaje = ej.peticion("insert into estado(`nombre`) values('"+nombre+"')");
+        return mensaje;
+    }
+    public static String updateEstado(Estado e) throws ClassNotFoundException{
+        String mensaje = "";
+        Ejecutar ej = new Ejecutar();
+        mensaje = ej.peticion("update estado set `nombre` = '"+e.getNombre()+"' where id ="+e.getId());
+        return mensaje;
+    }
 }
