@@ -5,18 +5,30 @@
  */
 package app;
 
+
+import java.sql.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Matias
  */
 public class AltaDuenio extends javax.swing.JFrame {
-
-    /**
-     * Creates new form AltaDuenio
-     */
+    Connection con=null;
+    PreparedStatement s;
+    String url="jdbc:mysql://localhost:3306/candelaria";
+    String driver="com.mysql.cj.jdbc.Driver";
+    String user="root"; 
+    String clave="";
+    
+    
     public AltaDuenio() {
         initComponents();
     }
+    
+    
+
+     
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -168,35 +180,37 @@ public class AltaDuenio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaActionPerformed
-        String nombre;
-       String apellido;
-       String localidad;
-       String fb;
-       String direccion;
-       String telefono;
+        try {
+            Class.forName(driver);
+            con=DriverManager.getConnection(url,user,clave);
+            s=con.prepareStatement("INSERT INTO duenio values(??????)");
+            s.setString(1,txtNombre.getText());
+            s.setString(2,txtApellido.getText());
+            s.setString(3,txtDireccion.getText());
+            s.setString(4,txtFb.getText());
+            s.setString(5,txtLocalidad.getText());
+            s.setString(6,txtTelefono.getText());
+            s.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null,"Alta con exito..");
+                 
+        } 
+        catch (ClassNotFoundException e){
+            JOptionPane.showMessageDialog(null,e);
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null,e);
+        }
         
-        nombre = txtNombre.getText();
-        apellido = txtApellido.getText();
-        localidad = txtLocalidad.getText();
-        fb = txtFb.getText();
-        direccion = txtDireccion.getText();
-        telefono = txtTelefono.getText();
+      
         
-        System.out.println("Nombre: " + nombre);
-        System.out.println("Apellido: " + apellido);
-        System.out.println("Localidad: " + localidad);
-        System.out.println("Direccion: " + direccion);
-        System.out.println("Telefono: " + telefono);
-        System.out.println("Facebook: " + fb);
+        
+       
+       
     }//GEN-LAST:event_btnAltaActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        txtNombre.setText("");
-        txtApellido.setText("");
-        txtLocalidad.setText("");
-        txtFb.setText("");
-        txtDireccion.setText("");
-        txtTelefono.setText("");
+        
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
