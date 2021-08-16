@@ -111,7 +111,10 @@ public class AltaEstado extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Nombre necesario.");
                 return;
             }
-            String mensaje = Estado.createEstado(txtNombre.getText());
+            Estado es = new Estado();
+            es.setNombre(txtNombre.getText());
+            
+            String mensaje = Estado.createEstado(es);
             
             if(!mensaje.equals("")){
                 JOptionPane.showMessageDialog(null, "Estado cargado exitosamente");

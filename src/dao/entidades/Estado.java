@@ -75,11 +75,14 @@ public class Estado {
     
     // </editor-fold>
  
-    
+    /**
+     *
+     * trae todas la lista de estados
+     */
     public static ArrayList<Estado> getEstados() throws SQLException, Exception{
         try{
             
-            ArrayList<Estado> razas = new ArrayList<Estado>();
+            ArrayList<Estado> estados = new ArrayList<Estado>();
             Ejecutar ej = new Ejecutar();
             ResultSet rs = ej.consulta("select id, nombre from estado");
             try{
@@ -87,19 +90,24 @@ public class Estado {
                     Estado e = new Estado();
                     e.setId(rs.getInt("id"));
                     e.setNombre(rs.getString("nombre"));
-                    razas.add(e);
+                    estados.add(e);
                 }
             }
             catch(SQLException sqlEx){
                 throw sqlEx;
             }
-            return razas;
+            return estados;
             
             }
         catch(ClassNotFoundException | SQLException ex){
             throw ex;
         }
     }
+    
+    /**
+     *
+     * Trae estado por id
+     */
     public static Estado getEstadoId(int id) throws SQLException, Exception{
         try{
             Estado e = new Estado();
@@ -128,6 +136,13 @@ public class Estado {
         mensaje = ej.peticion("insert into estado(`nombre`) values('"+nombre+"')");
         return mensaje;
     }
+    public static String createEstado(Estado es) throws ClassNotFoundException{
+        String mensaje = "";
+        Ejecutar ej = new Ejecutar();
+        mensaje = ej.peticion("insert into estado(`nombre`) values('"+es.nombre+"')");
+        return mensaje;
+    }
+    
     public static String updateEstado(Estado e) throws ClassNotFoundException{
         String mensaje = "";
         Ejecutar ej = new Ejecutar();
