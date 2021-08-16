@@ -2,9 +2,7 @@ package app;
 
 import dao.entidades.*;
 import java.beans.PropertyVetoException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
