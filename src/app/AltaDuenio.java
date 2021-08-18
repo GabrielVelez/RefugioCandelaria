@@ -6,10 +6,10 @@
 package app;
 
 
-import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
+import dao.entidades.*;
+import java.awt.HeadlessException;
 
 /**
  *
@@ -178,12 +178,25 @@ public class AltaDuenio extends javax.swing.JFrame {
 
     private void btnAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaActionPerformed
       
+     try {
+         if (txtNombre.getText().equals("")){
+             JOptionPane.showMessageDialog(null,"Nombre necesario.");
+                return;
+         }
+         String mensaje = Duenio.createDuenio(txtNombre.getText());
+         
+         if(mensaje.equals("")){
+             JOptionPane.showMessageDialog(null, "Duenio cargado exitosamente");
+             txtNombre.setText("");
+         }
+         else{
+                JOptionPane.showMessageDialog(null, mensaje);
+            }
+         }
+        catch(HeadlessException | ClassNotFoundException ex){
+            JOptionPane.showMessageDialog(null, ex.toString());
+     }
      
-     
-        
-        
-       
-       
     }//GEN-LAST:event_btnAltaActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
