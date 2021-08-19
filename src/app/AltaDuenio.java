@@ -6,21 +6,18 @@
 package app;
 
 
-import java.sql.*;
+import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
+import dao.entidades.*;
+import java.awt.HeadlessException;
+
 /**
  *
  * @author Matias
  */
 public class AltaDuenio extends javax.swing.JFrame {
-    Connection con=null;
-    PreparedStatement s;
-    String url="jdbc:mysql://localhost:3306/candelaria";
-    String driver="com.mysql.cj.jdbc.Driver";
-    String user="root"; 
-    String clave="";
     
-    
+  
     public AltaDuenio() {
         initComponents();
     }
@@ -180,33 +177,26 @@ public class AltaDuenio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaActionPerformed
-        try {
-            Class.forName(driver);
-            con=DriverManager.getConnection(url,user,clave);
-            s=con.prepareStatement("INSERT INTO duenio values(??????)");
-            s.setString(1,txtNombre.getText());
-            s.setString(2,txtApellido.getText());
-            s.setString(3,txtDireccion.getText());
-            s.setString(4,txtFb.getText());
-            s.setString(5,txtLocalidad.getText());
-            s.setString(6,txtTelefono.getText());
-            s.executeUpdate();
-            
-            JOptionPane.showMessageDialog(null,"Alta con exito..");
-                 
-        } 
-        catch (ClassNotFoundException e){
-            JOptionPane.showMessageDialog(null,e);
-        }
-        catch(SQLException e){
-            JOptionPane.showMessageDialog(null,e);
-        }
-        
       
-        
-        
-       
-       
+     try {
+         if (txtNombre.getText().equals("")){
+             JOptionPane.showMessageDialog(null,"Nombre necesario.");
+                return;
+         }
+         String mensaje = Duenio.createDuenio(txtNombre.getText());
+         
+         if(mensaje.equals("")){
+             JOptionPane.showMessageDialog(null, "Duenio cargado exitosamente");
+             txtNombre.setText("");
+         }
+         else{
+                JOptionPane.showMessageDialog(null, mensaje);
+            }
+         }
+        catch(HeadlessException | ClassNotFoundException ex){
+            JOptionPane.showMessageDialog(null, ex.toString());
+     }
+     
     }//GEN-LAST:event_btnAltaActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -216,7 +206,7 @@ public class AltaDuenio extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    private void a () {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
