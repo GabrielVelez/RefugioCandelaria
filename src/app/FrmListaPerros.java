@@ -42,7 +42,7 @@ public class FrmListaPerros extends javax.swing.JInternalFrame {
     private void loadTable(){
         try{
             ArrayList<Perro> perros = Perro.getPerros();
-            String col[] = {"id","Nombre","Edad", "Ingreso", "Raza", "Sexo", "Castrado", "Despar.", "Vacuna", "Antirrabica", "Adopción"};
+            String col[] = {"id","Nombre","Edad", "Ingreso", "Raza", "Sexo", "Castrado", "Despar.", "Vacuna", "Antirrabica", "Adopción", "Egreso"};
             DefaultTableModel tableModel = new DefaultTableModel(col, 0);
             tblPerros.setModel(tableModel);
             for(Perro p:perros){
@@ -100,6 +100,11 @@ public class FrmListaPerros extends javax.swing.JInternalFrame {
                     , desparacitado, vacuna,
                     antirrabica, adopcion};
                 tableModel.addRow(obj);
+                
+                tblPerros.getColumnModel().getColumn(0).setMaxWidth(0);
+                tblPerros.getColumnModel().getColumn(0).setPreferredWidth(0);
+                tblPerros.getColumnModel().getColumn(0).setMinWidth(0);
+                tblPerros.getColumnModel().getColumn(0).setWidth(0);
             }
         }
         catch(Exception ex){

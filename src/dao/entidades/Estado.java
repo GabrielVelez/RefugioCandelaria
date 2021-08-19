@@ -149,4 +149,9 @@ public class Estado {
         mensaje = ej.peticion("update estado set `nombre` = '"+e.getNombre()+"' where id ="+e.getId());
         return mensaje;
     }
+    
+    
+    public String toString() {
+        return nombre; //NECESARIO PARA QUE EL COMBO BOX DETECTE EL NOMBRE Y NO LA DIRECCION DE MEMORIA DEL OBJETO//
+    }
 }

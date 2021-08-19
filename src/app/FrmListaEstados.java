@@ -40,13 +40,20 @@ public class FrmListaEstados extends javax.swing.JInternalFrame {
     private void loadTable(){
         try{
             ArrayList<Estado> estados = Estado.getEstados();
-            String col[] = {"id","Nombre","",""};
+            String col[] = {"id","Nombre"};
             DefaultTableModel tableModel = new DefaultTableModel(col, 0);
             tblEstados.setModel(tableModel);
             for(Estado e:estados){
                 Object[] obj = {e.getId(), e.getNombre()};
                 tableModel.addRow(obj);
             }
+            
+            
+            
+                tblEstados.getColumnModel().getColumn(0).setMaxWidth(0);
+                tblEstados.getColumnModel().getColumn(0).setPreferredWidth(0);
+                tblEstados.getColumnModel().getColumn(0).setMinWidth(0);
+                tblEstados.getColumnModel().getColumn(0).setWidth(0);
         }
         catch(Exception ex){
             JOptionPane.showMessageDialog(null, "No se pudo cargar los estados.\n:Excepción:"+ex.toString());

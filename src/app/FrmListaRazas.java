@@ -50,6 +50,12 @@ public class FrmListaRazas extends javax.swing.JInternalFrame {
                 Object[] obj = {r.getId(), r.getNombre()};
                 tableModel.addRow(obj);
             }
+            
+            
+            tblRazas.getColumnModel().getColumn(0).setMaxWidth(0);
+            tblRazas.getColumnModel().getColumn(0).setPreferredWidth(0);
+            tblRazas.getColumnModel().getColumn(0).setMinWidth(0);
+            tblRazas.getColumnModel().getColumn(0).setWidth(0);
         }
         catch(Exception ex){
             JOptionPane.showMessageDialog(null, "No se pudo cargar las razas.\n:Excepción:"+ex.toString());

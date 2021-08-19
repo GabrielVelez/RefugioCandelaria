@@ -25,6 +25,7 @@ public class Perro {
     private boolean antirrabica;
     private boolean adopcion;
     private Integer id_duenio;
+    private int id_estado;
     private Date egreso;
     private ArrayList<Enfermedad> enfermedades;
     
@@ -32,7 +33,9 @@ public class Perro {
     // <editor-fold defaultstate="collapsed" desc="Constructors">
     public Perro() {
     }
-    public Perro(int id, String nombre, byte edad, int id_raza, Date ingresado, boolean sexo, boolean castrado, boolean desparacitado, boolean vacuna, boolean antirrabica, boolean adopcion, int id_duenio, Date egreso) {
+    public Perro(int id, String nombre, byte edad, int id_raza, Date ingresado, boolean sexo,
+            boolean castrado, boolean desparacitado, boolean vacuna, boolean antirrabica,
+            boolean adopcion, int id_duenio, Date egreso, int id_estado) {
         this.id = id;
         this.nombre = nombre;
         this.edad = edad;
@@ -46,6 +49,7 @@ public class Perro {
         this.adopcion = adopcion;
         this.id_duenio = id_duenio;
         this.egreso = egreso;
+        this.id_estado = id_estado;
     }
     
 
@@ -255,7 +259,18 @@ public class Perro {
     public void setEnfermedades(ArrayList<Enfermedad> enfermedades) {
         this.enfermedades = enfermedades;
     }
+    
+    public int getId_estado() {
+        return id_estado;
+    }
+
+    public void setId_estado(int id_estado) {
+        this.id_estado = id_estado;
+    }
+    
     // </editor-fold>
+
+    
     
     
     public static ArrayList<Perro> getPerros() throws SQLException, Exception{
@@ -280,7 +295,7 @@ public class Perro {
                     p.setDesparacitado(rs.getBoolean("desparacitado"));
                     p.setVacuna(rs.getBoolean("vacuna"));
                     p.setAntirrabica(rs.getBoolean("antirrabica"));
-                    p.setAdopcion(rs.getBoolean("adopcion"));
+                    p.setAdopcion(rs.getBoolean("adoptado"));
                     perros.add(p);
                 }
             }
@@ -303,7 +318,7 @@ public class Perro {
             Ejecutar ej = new Ejecutar();
             ResultSet rs = ej.consulta("select id, nombre, edad, ingresado, "
                                      + "id_raza, sexo, castrado, desparacitado, "
-                                     + "vacuna, antirrabica, adopcion "
+                                     + "vacuna, antirrabica, adoptado "
                                      + "from perro "
                                      + "where id ="+id);
             try{
@@ -319,7 +334,7 @@ public class Perro {
                     p.setDesparacitado(rs.getBoolean("desparacitado"));
                     p.setVacuna(rs.getBoolean("vacuna"));
                     p.setAntirrabica(rs.getBoolean("antirrabica"));
-                    p.setAdopcion(rs.getBoolean("adopcion"));
+                    p.setAdopcion(rs.getBoolean("adoptado"));
                     perros.add(p);
                 }
             }
@@ -333,5 +348,69 @@ public class Perro {
         catch(ClassNotFoundException | SQLException ex){
             throw ex;
         }
+    }
+    
+    public static String createPerro(Perro pe) throws ClassNotFoundException{
+        String mensaje = "";
+        int year = pe.getIngresado().getYear() + 1900;
+        int month = pe.getIngresado().getMonth() +1;
+        int  day = pe.getIngresado().getDate();
+        String query = "insert into perro(`nombre`,`edad`,`id_raza`,`ingresado`,`id_estado`,`sexo`,`castrado`,`desparacitado`,`vacuna`,`antirrabica`,`adoptado`";
+        
+        if(pe.getEgreso()!= null){
+            query += ",`egreso`";
+        }
+        query += ") "
+                + "values('"+pe.getNombre()+"',"+pe.getEdad()+","+pe.getId_raza()+",'"+year+"-"+month+"-"+day+"',"+pe.getId_estado();
+        
+        
+        if(pe.isSexo()){
+            query += ", 1";
+        }
+        else{
+            query += ", 0";
+        }
+        if(pe.isCastrado()){
+            query += ", 1";
+        }
+        else{
+            query += ", 0";
+        }
+        if(pe.isDesparacitado()){
+            query += ", 1";
+        }
+        else{
+            query += ", 0";
+        }
+        if(pe.isVacuna()){
+            query += ", 1";
+        }
+        else{
+            query += ", 0";
+        }
+        if(pe.isAntirrabica()){
+            query += ", 1";
+        }
+        else{
+            query += ", 0";
+        }
+        if(pe.isAdopcion()){
+            query += ", 1";
+        }
+        else{
+            query += ", 0";
+        }
+        if(pe.getEgreso()!= null){
+            year = pe.getEgreso().getYear() + 1900;
+            month = pe.getEgreso().getMonth() +1;
+            day = pe.getEgreso().getDate();
+            query += ", '"+year+"-"+month+"-"+day+"'";
+        }
+        
+        query  += ")";
+        
+        Ejecutar ej = new Ejecutar();
+        mensaje = ej.peticion(query);
+        return mensaje;
     }
 }

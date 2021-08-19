@@ -134,4 +134,9 @@ public class Raza {
         mensaje = ej.peticion("update raza set `nombre` = '"+r.getNombre()+"' where id ="+r.getId()+";");
         return mensaje;
     }
+    
+    
+    public String toString() {
+        return nombre; //NECESARIO PARA QUE EL COMBO BOX DETECTE EL NOMBRE Y NO LA DIRECCION DE MEMORIA DEL OBJETO//
+    }
 }
