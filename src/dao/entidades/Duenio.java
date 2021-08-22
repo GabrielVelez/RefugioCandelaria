@@ -229,10 +229,23 @@ public class Duenio {
         }
     }
     
-    public static String createDuenio(String nombre) throws ClassNotFoundException{
+    public static String createDuenio(Duenio de) throws ClassNotFoundException{
         String mensaje = "";
+        String facebook = "";
+        String vFb = "";
+        String telefono = "";
+        String vTel = "";
+        if (!(de.getFacebook() == null)){
+            facebook += ",`facebook`";
+            vFb = ","+vFb+"'";
+           
+        }
+        if (!(de.getTelefono() == null)){
+            telefono += ",`telefono`";
+            vTel = ","+vTel+"'";
+        }
         Ejecutar ej = new Ejecutar();
-        mensaje = ej.peticion("insert into duenio(`nombre`,`apellido`,`direccion`,`localidad`,`telefono`,`facebook`) values('"+nombre+"')");
+        mensaje = ej.peticion("insert into duenio(`nombre`,`apellido`,`direccion`,`localidad`"+telefono+""+facebook+") values('"+de.getNombre()+"','"+de.getApellido()+"','"+de.getDireccion()+"','"+de.getLocalidad()+"'"+vTel+""+vFb+")");
         return mensaje;
     }
     public static String updateDuenio(Duenio e) throws ClassNotFoundException{

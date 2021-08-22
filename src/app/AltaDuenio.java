@@ -183,7 +183,43 @@ public class AltaDuenio extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(null,"Nombre necesario.");
                 return;
          }
-         String mensaje = Duenio.createDuenio(txtNombre.getText());
+         
+         
+         if (txtApellido.getText().equals("")){
+             JOptionPane.showMessageDialog(null,"Apellido necesario.");
+                return;
+         }
+         
+         
+         if (txtDireccion.getText().equals("")){
+             JOptionPane.showMessageDialog(null,"Direccion necesaria.");
+                return;
+         }
+        
+         if (txtLocalidad.getText().equals("")){
+             JOptionPane.showMessageDialog(null,"Localidad necesaria.");
+                return;
+         }
+         
+         
+         Duenio de = new Duenio();
+         de.setNombre(txtNombre.getText());
+         de.setApellido(txtApellido.getText());
+         de.setDireccion(txtDireccion.getText());
+         de.setLocalidad(txtLocalidad.getText());
+         if (!(txtTelefono.getText().equals(""))){
+             de.setTelefono(txtTelefono.getText());
+         }
+         
+         if (!(txtFb.getText().equals(""))){
+             de.setFacebook(txtFb.getText());
+         }
+             
+         
+         
+         String mensaje = Duenio.createDuenio(de);
+         
+         
          
          if(mensaje.equals("")){
              JOptionPane.showMessageDialog(null, "Duenio cargado exitosamente");
