@@ -94,6 +94,11 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         jMenu4.setText("Dueño");
 
         mitmListaDuenios.setText("Listado de dueños");
+        mitmListaDuenios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitmListaDueniosActionPerformed(evt);
+            }
+        });
         jMenu4.add(mitmListaDuenios);
 
         jMenuBar1.add(jMenu4);
@@ -209,6 +214,22 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         }
                
     }//GEN-LAST:event_mitmListaEstadosActionPerformed
+
+    private void mitmListaDueniosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitmListaDueniosActionPerformed
+        // TODO add your handling code here:
+        FrmListaDuenios ventanaEstados;
+        try {
+            ventanaEstados = new FrmListaDuenios(this);
+            var jFrame = DpnlEscritorio.getSelectedFrame();
+            if(jFrame != null){
+                jFrame.dispose();
+                DpnlEscritorio.removeAll();            
+            }DpnlEscritorio.add(ventanaEstados);
+            ventanaEstados.show();
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(FrmMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }        
+    }//GEN-LAST:event_mitmListaDueniosActionPerformed
 
     /**
      * @param args the command line arguments

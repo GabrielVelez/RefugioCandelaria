@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package app;
 
 import dao.entidades.*;
@@ -15,14 +10,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Zelbag
  */
-public class frmListadoDuenioPanel1 extends javax.swing.JPanel {
-
-    private Iterable<Duenio> Duenios;
+public class FrmListaDuenios extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form frmListadoRazasPanel
+     * Creates new form NewJInternalFrame
      */
-    public frmListadoDuenioPanel1(FrmMenuPrincipal mP) throws PropertyVetoException {
+    public FrmListaDuenios(FrmMenuPrincipal mP) throws PropertyVetoException {
         initComponents();
         load();
         mPrincipal = mP;
@@ -30,8 +23,15 @@ public class frmListadoDuenioPanel1 extends javax.swing.JPanel {
 
     FrmMenuPrincipal mPrincipal;
     
-    
     private void load() throws PropertyVetoException{
+        try{
+            this.setMaximum(true);
+        }
+        catch(PropertyVetoException e)
+        {
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+        
         
         loadTable();
     }
@@ -39,21 +39,26 @@ public class frmListadoDuenioPanel1 extends javax.swing.JPanel {
     
     private void loadTable(){
         try{
-            ArrayList<Duenio> duenios = Duenio.getDuenios();
-            String col[] = {"id","Nombre","Apellido","Direccion","Localidad","Telefono","Facebook"};
+            ArrayList<Duenio> estados = Duenio.getDuenios();
+            String col[] = {"id","Nombre", "Apellido", "Direccion", "Localidad", "Telefono", "Facebook"};
             DefaultTableModel tableModel = new DefaultTableModel(col, 0);
-            tblDuenios.setModel(tableModel);
-            for(Duenio d:Duenios){
-                
-                Object[] obj = {d.getId(), d.getNombre(),d.getApellido(),d.getDireccion(),d.getLocalidad(),d.getTelefono(),d.getFacebook()};
+            tblEstados.setModel(tableModel);
+            for(Duenio e:estados){
+                Object[] obj = {e.getId(), e.getNombre(), e.getApellido(), e.getDireccion(), e.getLocalidad(), e.getTelefono(), e.getFacebook()};
                 tableModel.addRow(obj);
             }
+            
+            
+            
+                tblEstados.getColumnModel().getColumn(0).setMaxWidth(0);
+                tblEstados.getColumnModel().getColumn(0).setPreferredWidth(0);
+                tblEstados.getColumnModel().getColumn(0).setMinWidth(0);
+                tblEstados.getColumnModel().getColumn(0).setWidth(0);
         }
         catch(Exception ex){
-            JOptionPane.showMessageDialog(null, "No se pudo cargar los duenios.\n:Excepción:"+ex.toString());
+            JOptionPane.showMessageDialog(null, "No se pudo cargar los estados.\n:Excepción:"+ex.toString());
         }
     }
-    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -65,15 +70,16 @@ public class frmListadoDuenioPanel1 extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblDuenios = new javax.swing.JTable();
+        tblEstados = new javax.swing.JTable();
         btnFiltar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
 
+        setTitle("Listado de estados");
         setMaximumSize(new java.awt.Dimension(1038, 765));
         setMinimumSize(new java.awt.Dimension(1038, 765));
-        setName(""); // NOI18N
+        setPreferredSize(new java.awt.Dimension(1038, 765));
 
-        tblDuenios.setModel(new javax.swing.table.DefaultTableModel(
+        tblEstados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -81,10 +87,11 @@ public class frmListadoDuenioPanel1 extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "id", "Nombre", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tblDuenios);
+        tblEstados.setEnabled(false);
+        jScrollPane1.setViewportView(tblEstados);
 
         btnFiltar.setText("Filtrar");
         btnFiltar.setToolTipText("");
@@ -101,14 +108,14 @@ public class frmListadoDuenioPanel1 extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1018, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1002, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnAgregar)
@@ -124,9 +131,11 @@ public class frmListadoDuenioPanel1 extends javax.swing.JPanel {
                     .addComponent(btnFiltar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFiltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltarActionPerformed
@@ -136,15 +145,15 @@ public class frmListadoDuenioPanel1 extends javax.swing.JPanel {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
         try{
-            //            AltaRaza aRaza = new AltaRaza(mPrincipal, true);
-            //            aRaza.show();
-            //
-            //            loadTable();
+            AltaDuenio aEs = new AltaDuenio(mPrincipal, true);
+            aEs.show();
+
+            loadTable();
         }
         catch(Exception ex){
-            JOptionPane.showMessageDialog(null, "No se pudo abrir el formulario de alta.\n:Excepción:"+ex.toString());
+            JOptionPane.showMessageDialog(null, "Error al abrir el formulario.\n:Excepción:"+ex.toString());
         }
-
+        
     }//GEN-LAST:event_btnAgregarActionPerformed
 
 
@@ -152,6 +161,6 @@ public class frmListadoDuenioPanel1 extends javax.swing.JPanel {
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnFiltar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblDuenios;
+    private javax.swing.JTable tblEstados;
     // End of variables declaration//GEN-END:variables
 }

@@ -13,9 +13,7 @@ import java.util.ArrayList;
 
 public class Duenio {
 
-    public static ArrayList<Duenio> getDuenios() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
     
     private int id;
     private String nombre;
@@ -172,12 +170,12 @@ public class Duenio {
     
     // </editor-fold>
     
-    public static ArrayList<Duenio> getEstados() throws SQLException, Exception{
+    public static ArrayList<Duenio> getDuenios() throws SQLException, Exception{
         try{
             
             ArrayList<Duenio> duenios = new ArrayList<Duenio>();
             Ejecutar ej = new Ejecutar();
-            ResultSet rs = ej.consulta("select id, nombre from estado");
+            ResultSet rs = ej.consulta("select id, nombre, apellido, direccion, localidad, telefono, facebook from duenio");
             try{
                 while(rs.next()) {
                     Duenio d = new Duenio();
@@ -237,15 +235,16 @@ public class Duenio {
         String vTel = "";
         if (!(de.getFacebook() == null)){
             facebook += ",`facebook`";
-            vFb = ","+vFb+"'";
+            vFb = ", '"+de.getFacebook()+"'";
            
         }
         if (!(de.getTelefono() == null)){
             telefono += ",`telefono`";
-            vTel = ","+vTel+"'";
+            vTel = ",'"+de.getTelefono()+"'";
         }
         Ejecutar ej = new Ejecutar();
-        mensaje = ej.peticion("insert into duenio(`nombre`,`apellido`,`direccion`,`localidad`"+telefono+""+facebook+") values('"+de.getNombre()+"','"+de.getApellido()+"','"+de.getDireccion()+"','"+de.getLocalidad()+"'"+vTel+""+vFb+")");
+        mensaje = ej.peticion("insert into duenio(`nombre`,`apellido`,`direccion`,`localidad`"+telefono+""+facebook+") "
+                + "values('"+de.getNombre()+"','"+de.getApellido()+"','"+de.getDireccion()+"','"+de.getLocalidad()+"'"+vTel+""+vFb+")");
         return mensaje;
     }
     public static String updateDuenio(Duenio e) throws ClassNotFoundException{
