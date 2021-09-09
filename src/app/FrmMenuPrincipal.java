@@ -155,7 +155,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         FrmListaPerros ventanaPerros;
         try {
             ventanaPerros = new FrmListaPerros(this);
-            var jFrame = DpnlEscritorio.getSelectedFrame();
+            javax.swing.JInternalFrame jFrame = DpnlEscritorio.getSelectedFrame();
             if(jFrame != null){
                 jFrame.dispose();
                 DpnlEscritorio.removeAll();            
@@ -186,7 +186,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         FrmListaRazas ventanaRazas;
         try {
             ventanaRazas = new FrmListaRazas(this);
-            var jFrame = DpnlEscritorio.getSelectedFrame();
+            javax.swing.JInternalFrame jFrame = DpnlEscritorio.getSelectedFrame();
             if(jFrame != null){
                 jFrame.dispose();
                 DpnlEscritorio.removeAll();            
@@ -203,7 +203,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         FrmListaEstados ventanaEstados;
         try {
             ventanaEstados = new FrmListaEstados(this);
-            var jFrame = DpnlEscritorio.getSelectedFrame();
+            javax.swing.JInternalFrame jFrame = DpnlEscritorio.getSelectedFrame();
             if(jFrame != null){
                 jFrame.dispose();
                 DpnlEscritorio.removeAll();            
@@ -220,7 +220,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         FrmListaDuenios ventanaEstados;
         try {
             ventanaEstados = new FrmListaDuenios(this);
-            var jFrame = DpnlEscritorio.getSelectedFrame();
+            javax.swing.JInternalFrame jFrame = DpnlEscritorio.getSelectedFrame();
             if(jFrame != null){
                 jFrame.dispose();
                 DpnlEscritorio.removeAll();            
