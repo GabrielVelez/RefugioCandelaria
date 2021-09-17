@@ -15,7 +15,7 @@ import java.awt.HeadlessException;
  *
  * @author Matias
  */
-public class AltaDuenio extends javax.swing.JDialog {
+public class AltaDuenio extends javax.swing.JFrame {
     
   
     public AltaDuenio() {
@@ -24,7 +24,7 @@ public class AltaDuenio extends javax.swing.JDialog {
         
     }
     public AltaDuenio(FrmMenuPrincipal ventanaPrincipal, boolean modal) {
-        super(ventanaPrincipal,modal);
+        // super(ventanaPrincipal,modal);
         initComponents();
         look();
     }
@@ -230,6 +230,8 @@ public class AltaDuenio extends javax.swing.JDialog {
          if(mensaje.equals("")){
              JOptionPane.showMessageDialog(null, "Duenio cargado exitosamente");
              txtNombre.setText("");
+             System.exit(WIDTH);
+             
          }
          else{
                 JOptionPane.showMessageDialog(null, mensaje);
@@ -237,6 +239,8 @@ public class AltaDuenio extends javax.swing.JDialog {
          }
         catch(HeadlessException | ClassNotFoundException ex){
             JOptionPane.showMessageDialog(null, ex.toString());
+            
+            
      }
      
     }//GEN-LAST:event_btnAltaActionPerformed
