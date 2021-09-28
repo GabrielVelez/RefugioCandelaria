@@ -5,17 +5,27 @@
  */
 package app;
 
+import static app.AltaRaza.look;
+import java.awt.HeadlessException;
+import javax.swing.JOptionPane;
+import dao.entidades.*;
+import java.awt.HeadlessException;
+
 /**
  *
  * @author Matias
  */
 public class Modificarduenio extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Modificardueño
-     */
     public Modificarduenio() {
         initComponents();
+        look();
+        
+    }
+    public Modificarduenio(FrmMenuPrincipal ventanaPrincipal, boolean modal) {
+        // super(ventanaPrincipal,modal);
+        initComponents();
+        look();
     }
 
     /**
