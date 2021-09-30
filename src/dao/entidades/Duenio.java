@@ -202,6 +202,7 @@ public class Duenio {
     }
     public static Duenio getDuenioId(int id) throws SQLException, Exception{
         try{
+            
             Duenio d = new Duenio();
             Ejecutar ej = new Ejecutar();
             ResultSet rs = ej.consulta("select id, nombre from estado where id ="+id);
@@ -214,6 +215,7 @@ public class Duenio {
                     d.setLocalidad(rs.getString("localidad"));
                     d.setFacebook(rs.getString("facebook"));
                     d.setTelefono(rs.getString("telefono"));
+                    
                 }
             }
             catch(SQLException sqlEx){
@@ -226,7 +228,49 @@ public class Duenio {
             throw ex;
         }
     }
-    
+    public static ArrayList<Duenio> getDuenios(Duenio du) throws ClassNotFoundException, SQLException{
+        try{
+            ArrayList<Duenio> duenios = new ArrayList<Duenio>();
+            String nombre, apellido;
+            Ejecutar ej = new Ejecutar();
+            if(du.getNombre().equals("")){
+                nombre = "";
+            }
+            else{
+                nombre = "nombre = '"+du.getNombre()+"'";
+            }
+            if(du.getApellido().equals("")){
+                apellido = "";
+            }
+            else{
+                if(!(du.getNombre().equals(""))){
+                    apellido = " and apellido = '"+du.getApellido()+"'";
+                }
+                else
+                    apellido = "apellido = '"+du.getApellido()+"'";
+            }
+            ResultSet rs = ej.consulta("select id, nombre, apellido, direccion from duenio where "+nombre+apellido);
+            try{
+                while(rs.next()) {
+                    Duenio d = new Duenio();
+                    d.setId(rs.getInt("id"));
+                    d.setNombre(rs.getString("nombre"));
+                    d.setApellido(rs.getString("apellido"));
+                    d.setDireccion(rs.getString("direccion"));
+                    
+                    duenios.add(d);
+                }
+            }
+            catch(SQLException sqlEx){
+                throw sqlEx;
+            }
+            return duenios;
+            
+            }
+        catch(ClassNotFoundException | SQLException ex){
+            throw ex;
+        }
+    }
     public static String createDuenio(Duenio de) throws ClassNotFoundException{
         String mensaje = "";
         String facebook = "";

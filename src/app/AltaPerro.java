@@ -20,8 +20,9 @@ public class AltaPerro extends javax.swing.JDialog {
         initComponents();
         look();
         loadCmbs();
+        asd = ventanaPrincipal;
     }
-
+    FrmMenuPrincipal asd;
     private void loadCmbs(){
         try{
             ArrayList<Raza> razas = Raza.getRazas();
@@ -262,6 +263,8 @@ public class AltaPerro extends javax.swing.JDialog {
 
     private void btnDuenioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDuenioActionPerformed
         // TODO add your handling code here:
+        FrmSelectDuenio selectDuenio = new FrmSelectDuenio(asd, true, this);
+        selectDuenio.show();
     }//GEN-LAST:event_btnDuenioActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
