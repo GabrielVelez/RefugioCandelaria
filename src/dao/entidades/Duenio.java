@@ -298,6 +298,22 @@ public class Duenio {
         return mensaje;
     }
     
+    
+    
+    public static String deleteDuenio(int id) throws Exception{
+        try{
+            
+            Duenio d = new Duenio();
+            Ejecutar ej = new Ejecutar();
+            String mensaje = ej.peticion("delete from duenio where id ="+id);
+            
+            return mensaje;
+            
+            }
+        catch(Exception ex){
+            throw ex;
+        }
+    }
 }
 
 

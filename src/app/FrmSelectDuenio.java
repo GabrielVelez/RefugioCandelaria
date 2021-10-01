@@ -32,7 +32,6 @@ public class FrmSelectDuenio extends javax.swing.JDialog {
 
     
     AltaPerro altaPerro;
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -137,6 +136,19 @@ public class FrmSelectDuenio extends javax.swing.JDialog {
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         // TODO add your handling code here:
+        if(tblDuenios.getSelectedRow() == -1){
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un registro de la tabla");
+                return;
+        }
+        Duenio d = new Duenio();
+        d.setId(Integer.parseInt(tblDuenios.getValueAt(tblDuenios.getSelectedRow(), 0).toString()));
+        d.setNombre(tblDuenios.getValueAt(tblDuenios.getSelectedRow(), 1).toString());
+        d.setApellido(tblDuenios.getValueAt(tblDuenios.getSelectedRow(), 2).toString());
+        d.setDireccion(tblDuenios.getValueAt(tblDuenios.getSelectedRow(), 3).toString());
+        
+        
+        altaPerro.d = d;
+        this.dispose();
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed

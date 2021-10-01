@@ -23,6 +23,9 @@ public class AltaPerro extends javax.swing.JDialog {
         asd = ventanaPrincipal;
     }
     FrmMenuPrincipal asd;
+    
+    public Duenio d = null;
+    
     private void loadCmbs(){
         try{
             ArrayList<Raza> razas = Raza.getRazas();
@@ -265,6 +268,10 @@ public class AltaPerro extends javax.swing.JDialog {
         // TODO add your handling code here:
         FrmSelectDuenio selectDuenio = new FrmSelectDuenio(asd, true, this);
         selectDuenio.show();
+        
+        if(d != null){
+            txtDuenio.setText(d.getNombre()+" "+ d.getApellido());
+        }
     }//GEN-LAST:event_btnDuenioActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed

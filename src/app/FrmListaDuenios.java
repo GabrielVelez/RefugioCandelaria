@@ -3,6 +3,8 @@ package app;
 import dao.entidades.*;
 import java.beans.PropertyVetoException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -74,6 +76,7 @@ public class FrmListaDuenios extends javax.swing.JInternalFrame {
         btnFiltar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
 
         setTitle("Listado de estados");
         setMaximumSize(new java.awt.Dimension(1038, 765));
@@ -91,7 +94,6 @@ public class FrmListaDuenios extends javax.swing.JInternalFrame {
                 "id", "Nombre", "Title 3", "Title 4"
             }
         ));
-        tblEstados.setEnabled(false);
         jScrollPane1.setViewportView(tblEstados);
 
         btnFiltar.setText("Filtrar");
@@ -116,6 +118,13 @@ public class FrmListaDuenios extends javax.swing.JInternalFrame {
             }
         });
 
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -126,6 +135,8 @@ public class FrmListaDuenios extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1002, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnEliminar)
+                        .addGap(18, 18, 18)
                         .addComponent(btnModificar)
                         .addGap(18, 18, 18)
                         .addComponent(btnAgregar)
@@ -140,7 +151,8 @@ public class FrmListaDuenios extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnFiltar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
                 .addGap(60, 60, 60))
@@ -180,9 +192,37 @@ public class FrmListaDuenios extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnModificarActionPerformed
 
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        try {
+            if(tblEstados.getSelectedRow() == -1){
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un registro de la tabla");
+                return;
+            }
+            int id =(Integer.parseInt(tblEstados.getValueAt(tblEstados.getSelectedRow(), 0).toString()));
+            String nombre =(tblEstados.getValueAt(tblEstados.getSelectedRow(), 1).toString());
+            String apellido = (tblEstados.getValueAt(tblEstados.getSelectedRow(), 2).toString());
+            int input = JOptionPane.showConfirmDialog(null, "¿Seguro que desea eliminar a "+nombre+" "+apellido+" de la lista?");
+        
+            if(input == 0){
+                String mensaje = Duenio.deleteDuenio(id);
+                if(mensaje.equals("")){
+                    loadTable();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, mensaje);
+                }
+            }
+        }
+        catch (Exception ex) {
+            Logger.getLogger(FrmListaDuenios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnFiltar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JScrollPane jScrollPane1;

@@ -90,7 +90,6 @@ public class FrmListaEstados extends javax.swing.JInternalFrame {
                 "id", "Nombre", "Title 3", "Title 4"
             }
         ));
-        tblEstados.setEnabled(false);
         jScrollPane1.setViewportView(tblEstados);
 
         btnFiltar.setText("Filtrar");

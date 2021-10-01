@@ -360,6 +360,9 @@ public class Perro {
         if(pe.getEgreso()!= null){
             query += ",`egreso`";
         }
+        if(pe.getId_duenio()!= null){
+            query += ",`id_duenio`";
+        }
         query += ") "
                 + "values('"+pe.getNombre()+"',"+pe.getEdad()+","+pe.getId_raza()+",'"+year+"-"+month+"-"+day+"',"+pe.getId_estado();
         
@@ -406,7 +409,9 @@ public class Perro {
             day = pe.getEgreso().getDate();
             query += ", '"+year+"-"+month+"-"+day+"'";
         }
-        
+        if(pe.getId_duenio()!= null){
+            query += ",`"+pe.getId_duenio()+"`";
+        }
         query  += ")";
         
         Ejecutar ej = new Ejecutar();
