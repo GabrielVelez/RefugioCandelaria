@@ -139,4 +139,19 @@ public class Raza {
     public String toString() {
         return nombre; //NECESARIO PARA QUE EL COMBO BOX DETECTE EL NOMBRE Y NO LA DIRECCION DE MEMORIA DEL OBJETO//
     }
+    
+    public static String deleteRaza(int id) throws Exception{
+        try{
+            
+            Raza r = new Raza();
+            Ejecutar ej = new Ejecutar();
+            String mensaje = ej.peticion("delete from raza where id ="+id);
+            
+            return mensaje;
+            
+            }
+        catch(Exception ex){
+            throw ex;
+        }
+    }
 }

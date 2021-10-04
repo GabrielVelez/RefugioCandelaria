@@ -78,7 +78,7 @@ public class FrmListaDuenios extends javax.swing.JInternalFrame {
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
 
-        setTitle("Listado de estados");
+        setTitle("Listado de dueños");
         setMaximumSize(new java.awt.Dimension(1038, 765));
         setMinimumSize(new java.awt.Dimension(1038, 765));
         setPreferredSize(new java.awt.Dimension(1038, 765));

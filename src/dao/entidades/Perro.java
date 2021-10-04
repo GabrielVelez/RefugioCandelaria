@@ -418,4 +418,18 @@ public class Perro {
         mensaje = ej.peticion(query);
         return mensaje;
     }
+    public static String deletePerro(int id) throws Exception{
+        try{
+            
+            Perro p = new Perro();
+            Ejecutar ej = new Ejecutar();
+            String mensaje = ej.peticion("delete from perro where id ="+id);
+            
+            return mensaje;
+            
+            }
+        catch(Exception ex){
+            throw ex;
+        }
+    }
 }

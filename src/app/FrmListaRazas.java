@@ -5,6 +5,8 @@ import java.beans.PropertyVetoException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -75,6 +77,7 @@ public class FrmListaRazas extends javax.swing.JInternalFrame {
         tblRazas = new javax.swing.JTable();
         btnFiltar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
 
         setTitle("Listado de razas");
         setMaximumSize(new java.awt.Dimension(1038, 765));
@@ -109,6 +112,13 @@ public class FrmListaRazas extends javax.swing.JInternalFrame {
             }
         });
 
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -117,8 +127,10 @@ public class FrmListaRazas extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1002, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnEliminar)
+                        .addGap(18, 18, 18)
                         .addComponent(btnAgregar)
                         .addGap(18, 18, 18)
                         .addComponent(btnFiltar)))
@@ -130,10 +142,11 @@ public class FrmListaRazas extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnFiltar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
-                .addContainerGap())
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
+                .addGap(60, 60, 60))
         );
 
         pack();
@@ -157,9 +170,37 @@ public class FrmListaRazas extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_btnAgregarActionPerformed
 
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        try {
+            if(tblRazas.getSelectedRow() == -1){
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un registro de la tabla");
+                return;
+            }
+            int id =(Integer.parseInt(tblRazas.getValueAt(tblRazas.getSelectedRow(), 0).toString()));
+            String nombre =(tblRazas.getValueAt(tblRazas.getSelectedRow(), 1).toString());
+            
+            int input = JOptionPane.showConfirmDialog(null, "¿Seguro que desea eliminar la raza "+nombre+" de la lista?");
+        
+            if(input == 0){
+                String mensaje = Duenio.deleteDuenio(id);
+                if(mensaje.equals("")){
+                    loadTable();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, mensaje);
+                }
+            }
+        }
+        catch (Exception ex) {
+            Logger.getLogger(FrmListaDuenios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnFiltar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblRazas;
