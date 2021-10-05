@@ -183,7 +183,7 @@ public class FrmListaRazas extends javax.swing.JInternalFrame {
             int input = JOptionPane.showConfirmDialog(null, "¿Seguro que desea eliminar la raza "+nombre+" de la lista?");
         
             if(input == 0){
-                String mensaje = Duenio.deleteDuenio(id);
+                String mensaje = Raza.deleteRaza(id);
                 if(mensaje.equals("")){
                     loadTable();
                 }

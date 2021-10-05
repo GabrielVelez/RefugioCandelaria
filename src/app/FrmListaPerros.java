@@ -233,7 +233,7 @@ public class FrmListaPerros extends javax.swing.JInternalFrame {
             int input = JOptionPane.showConfirmDialog(null, "¿Seguro que desea eliminar a "+nombre+" de edad "+edad+" años, de la lista?");
         
             if(input == 0){
-                String mensaje = Duenio.deleteDuenio(id);
+                String mensaje = Perro.deletePerro(id);
                 if(mensaje.equals("")){
                     loadTable();
                 }
