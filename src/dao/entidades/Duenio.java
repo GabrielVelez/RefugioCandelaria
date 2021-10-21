@@ -205,7 +205,7 @@ public class Duenio {
             
             Duenio d = new Duenio();
             Ejecutar ej = new Ejecutar();
-            ResultSet rs = ej.consulta("select id, nombre from estado where id ="+id);
+            ResultSet rs = ej.consulta("select id, nombre, apellido, direccion, localidad, facebook, telefono from duenio where id ="+id);
             try{
                 while(rs.next()) {
                     d.setId(rs.getInt("id"));
@@ -293,8 +293,21 @@ public class Duenio {
     }
     public static String updateDuenio(Duenio e) throws ClassNotFoundException{
         String mensaje = "";
+        String query = "";
         Ejecutar ej = new Ejecutar();
-        mensaje = ej.peticion("update estado set `nombre` = '"+e.getNombre()+"' where id ="+e.getId());
+        query += "update duenio set `nombre` = '"+e.getNombre()+"',"
+                + " `apellido` = '"+e.getApellido()+"', `direccion` = '"+e.getDireccion()+"', `localidad` = '"+e.getLocalidad()+"' ";
+                        
+        if(!(e.getTelefono() == null)){
+            query += " `telefono` = '"+e.getTelefono()+"'";
+        }
+        if(!(e.getFacebook() == null)){
+            query += " `facebook` = '"+e.getFacebook()+"'";
+        }
+        
+        
+        query += " where id ="+e.getId();
+        mensaje = ej.peticion(query);
         return mensaje;
     }
     

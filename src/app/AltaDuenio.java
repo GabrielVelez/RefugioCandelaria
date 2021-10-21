@@ -230,7 +230,7 @@ public class AltaDuenio extends javax.swing.JFrame {
          if(mensaje.equals("")){
              JOptionPane.showMessageDialog(null, "Duenio cargado exitosamente");
              txtNombre.setText("");
-             System.exit(WIDTH);
+             
              
          }
          else{

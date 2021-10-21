@@ -182,7 +182,14 @@ public class FrmListaDuenios extends javax.swing.JInternalFrame {
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
         try{
-            Modificarduenio aEs = new Modificarduenio(mPrincipal, true);
+            if(tblEstados.getSelectedRow() == -1){
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un registro de la tabla");
+                return;
+            }
+            int id =(Integer.parseInt(tblEstados.getValueAt(tblEstados.getSelectedRow(), 0).toString()));
+            
+            
+            Modificarduenio aEs = new Modificarduenio(id);
             aEs.show();
 
             loadTable();
