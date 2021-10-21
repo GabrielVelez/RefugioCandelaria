@@ -27,16 +27,7 @@ public class FrmListaRazas extends javax.swing.JInternalFrame {
 
     FrmMenuPrincipal mPrincipal;
     
-    private void load() throws PropertyVetoException{
-        try{
-            this.setMaximum(true);
-        }
-        catch(PropertyVetoException e)
-        {
-            JOptionPane.showMessageDialog(null, e.toString());
-        }
-        
-        
+    private void load(){
         loadTable();
     }
     
